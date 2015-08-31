@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'Sprint Boot Starter WAR'
+rootProject.name = 'starter'
