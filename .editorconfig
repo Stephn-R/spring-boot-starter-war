@@ -1,0 +1,20 @@
+root = true
+
+# Forces all files to end in new-line
+[*]
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+
+[*.{html, htm, jsp}]
+indent_style = tab
+indent_size = 4
+
+[*.{js,sass,scss}]
+indent_style = space
+indent_size = 2
+
+[*.java]
+indent_style = tab
+indent_size = 4

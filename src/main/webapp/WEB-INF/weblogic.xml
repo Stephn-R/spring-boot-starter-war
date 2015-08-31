@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app"
+                      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+  <!-- Settings required for Hibernate  -->
+  <wls:container-descriptor>
+     <wls:prefer-web-inf-classes>true</wls:prefer-web-inf-classes>
+   </wls:container-descriptor>
+
+   <!--  Setting up application specific Session id -->
+   <wls:session-descriptor>
+     <wls:timeout-secs>3600</wls:timeout-secs>
+     <wls:cookie-name>ATOSESSIONID</wls:cookie-name>
+     <wls:cookie-path>/</wls:cookie-path>
+     <wls:cookie-domain>.gartner.com</wls:cookie-domain>
+   </wls:session-descriptor>
+   
+</wls:weblogic-web-app>

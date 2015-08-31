@@ -22,6 +22,14 @@ The Spring-Boot-Starter-WAR project has already been built and is ready to use *
 3. Run the command `gradle appStartWar`
 4. Enjoy!
 
+## Important Tips
+
+I have included several automation tools to help with building the project and managing changes. As such, below are some of the tools that come attached with Gradle:
+
+1. Additional Build Automation with Gulp
+	a. Various Gulp Tasks like linting, documentation generators, and more
+2. Project management via separate config files for Gulp and Gradle
+
 ## Reporting Issues <a name="reporting-issues"/>
 
 Having trouble with the Spring-Boot-Starter-WAR project? We'd like to help! Please navigate to the [Contributing.md](https://github.com/Stephn-R/spring-boot-starter-war/blob/master/CONTRIBUTING.md) for instructions on how to submit an issue/PR
@@ -40,5 +48,5 @@ Gretty is a feature-rich gradle plugin for running web-apps on embedded servlet 
 
 ## License
 
-Spring-Boot-Starter-WAR is released under the [GPL-2.0 license](https://github.com/Stephn-R/spring-boot-starter-war/blob/master/LICENSE) 
+Spring-Boot-Starter-WAR is released under the [GPL-2.0 license](https://github.com/Stephn-R/spring-boot-starter-war/blob/master/LICENSE)
 

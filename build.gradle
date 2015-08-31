@@ -1,29 +1,40 @@
+// Config Properties
+ext.buildProperties = new Properties()
+buildProperties.load(new FileInputStream("src/config.properties"))
+
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
-        classpath "org.akhikhl.gretty:gretty:1.2.4"
+        classpath 'org.akhikhl.gretty:gretty:1.2.4'
+        classpath 'be.filipblondeel.gradle:gradle-gulp-plugin:0.1'
     }
 }
 
+// Plugins
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
-apply plugin: "org.akhikhl.gretty"
+apply plugin: 'org.akhikhl.gretty'
+apply plugin: 'gulp'
 
 repositories {
     jcenter()
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+// ################################################################################################
+// ################################################################################################
+
+sourceCompatibility = buildProperties['java.version']
+targetCompatibility = buildProperties['java.version']
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    
+
     [
         'org.springframework.boot:spring-boot-starter-web',
         'org.springframework.boot:spring-boot-starter-log4j2',
@@ -31,24 +42,65 @@ dependencies {
         'org.springframework.boot:spring-boot-starter-test'
     ].each { dep ->
         compile(dep) {
+            // Prevent Log4j loading and favor Log4j2
             exclude module: 'spring-boot-starter-tomcat'
-            exclude module: "spring-boot-starter-logging"
-            exclude module: "logback-classic"
+            exclude module: 'spring-boot-starter-logging'
+            exclude module: 'logback-classic'
         }
     }
-    
+
     testCompile "junit:junit:4.11"
 }
 
 war {
-    version '0.0.1'
+    version buildProperties['war.version']
     from 'src'
-    webInf { from 'src/main/webapp/WEB-INF' }
-    classpath fileTree('additionalLibs')
-    webXml = file('src/main/webapp/WEB-INF/web.xml')
+    webInf { from buildProperties['war.webInfDirectory'] }
+    webXml = file(buildProperties['war.webXmlFile'])
 }
 
+def env = (buildProperties['gretty.environment'] ? buildProperties['gretty.environment'] : 'DEV')
+
 gretty {
-    httpPort = 5555
-    springBootVersion = '1.2.5'
+    if(env.equals('PROD') || env.equals('QA')) {
+        // QA and PROD
+        fileLogEnabled =    buildProperties['gretty.fileLogging']
+        logDir =            buildProperties['gretty.logDirectory']
+    } else {
+        // DEV
+        consoleLogEnabled = buildProperties['gretty.consoleLogging']
+    }
+    httpPort =          Integer.parseInt(buildProperties['gretty.port'])
+    loggingLevel =      buildProperties['gretty.loggingLevel']
+    springBootVersion = buildProperties['gretty.springBootVersion']
 }
+
+
+
+// #################################################
+// #################################################
+
+import org.akhikhl.gretty.AppStartTask
+import org.akhikhl.gretty.AppRestartTask
+
+// #################################################
+// #################################################
+
+task ('appStartTask', type: AppStartTask) { description = 'Runs custom tasks/scripts on App Start' }
+task ('appRestartTask', type: AppRestartTask) { description = 'Runs custom tasks/scripts on App Restart' }
+
+// ###########################################################
+// ###########################################################
+
+// makes sure on each build that gulp is installed
+gulp_build.dependsOn 'installGulp'
+
+// processes your package.json before running gulp build
+gulp_build.dependsOn 'npmInstall'
+
+// runs the gulp build task on gradle build
+build.dependsOn gulp_build
+
+// zips up all assets on gradle appStart/Restart
+appStartTask.dependsOn gulp_appStart
+appRestartTask.dependsOn gulp_appRestart

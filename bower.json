@@ -1,0 +1,21 @@
+{
+  "name": "spring-boot-starter-war",
+  "version": "0.0.0",
+  "authors": [
+    "Stephen Rodriguez <steprodriguez10@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "GPL-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/main/webapp/resources/vendor"
+  ],
+  "private": true,
+  "dependencies": {
+    "angular-mocks": "~1.4.4",
+    "bootstrap": "~3.3.5"
+  }
+}
