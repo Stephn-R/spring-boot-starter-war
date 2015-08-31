@@ -13,14 +13,16 @@ The Spring-Boot-Starter-WAR project has already been built and is ready to use *
 2. Import the Gradle using the Gradle import tool
 3. Open the Tasks Quick Launcher by pressing `CTRL+ALT+SHIFT+R`
 4. Run the task `appStartWar`
-5. Enjoy!
+5. [Click Here to open the page](http://localhost:5555/starter)
+6. Enjoy!
 
 #### Terminal
 
 1. Open up a terminal
 2. Cd into the directory containing the project
 3. Run the command `gradle appStartWar`
-4. Enjoy!
+4. [Click Here to open the page](http://localhost:5555/starter) 
+5. Enjoy!
 
 ## Important Tips
 
