@@ -1,6 +1,6 @@
 // Config Properties
 ext.buildProperties = new Properties()
-buildProperties.load(new FileInputStream("src/config.properties"))
+buildProperties.load(project.rootProject.file('src/config.properties').newDataInputStream())
 
 buildscript {
     repositories {
