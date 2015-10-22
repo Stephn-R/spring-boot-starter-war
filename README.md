@@ -21,7 +21,7 @@ The Spring-Boot-Starter-WAR project has already been built and is ready to use *
 1. Open up a terminal
 2. Cd into the directory containing the project
 3. Run the command `gradle appStartWar`
-4. [Click Here to open the page](http://localhost:5555/starter) 
+4. [Click Here to open the page](http://localhost:5555/starter)
 5. Enjoy!
 
 ## Important Tips
@@ -50,5 +50,5 @@ Gretty is a feature-rich gradle plugin for running web-apps on embedded servlet 
 
 ## License
 
-Spring-Boot-Starter-WAR is released under the [GPL-2.0 license](https://github.com/Stephn-R/spring-boot-starter-war/blob/master/LICENSE)
+Spring-Boot-Starter-WAR is released under the [MIT License](https://github.com/Stephn-R/spring-boot-starter-war/blob/master/LICENSE)
 

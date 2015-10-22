@@ -12,13 +12,13 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
+ * Main File for running Spring Boot Application
  * @author Stephn-R
- *
  */
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 	/**
-	 *
+	 * Maps all the resource folders for Spring Boot
 	 */
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -26,16 +26,8 @@ public class Application extends SpringBootServletInitializer {
     }
 
 	/**
-	 *
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-
-	/**
-	 *
-	 * @return
+	 * Custom function for adding prefix/suffixes to views
+	 * @return {@link InternalResourceViewResolver}
 	 */
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
@@ -46,12 +38,20 @@ public class Application extends SpringBootServletInitializer {
 	}
 
 	/**
-	 *
-	 * @return
+	 * Simple dispatcher servlet creater
+	 * @return {@link DispatcherServlet}
 	 */
 	@Bean
 	// Only used when running in embedded servlet
 	public DispatcherServlet dispatcherServlet() {
 		return new DispatcherServlet();
+	}
+
+	/**
+	 * Runs the application
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
 	}
 }
