@@ -6,6 +6,14 @@
     </Console>
   </Appenders>
   <Loggers>
+
+    <logger name="com.base.starter" level="info" />
+    
+    <logger name="com.base.starter.api" level="info" />
+    <logger name="com.base.starter.api.models" level="info" />
+    
+    <logger name="com.base.starter.cors" level="info" />
+
     <Root level="info">
       <AppenderRef ref="Console"/>
     </Root>

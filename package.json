@@ -4,6 +4,7 @@
   "description": "A starter template project for building Spring Boot projects that deploy as WAR",
   "main": "gulpfile.babel.js",
   "scripts": {
+    "start": "gradle appRun",
     "test": "gulp test"
   },
   "author": "Stephen Rodriguez <steprodriguez10@gmail.com>",

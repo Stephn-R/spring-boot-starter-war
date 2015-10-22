@@ -11,6 +11,7 @@ buildscript {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
         classpath 'org.akhikhl.gretty:gretty:1.2.4'
         classpath 'be.filipblondeel.gradle:gradle-gulp-plugin:0.1'
+        classpath 'com.google.code.gson:gson:2.4'
     }
 }
 
@@ -34,6 +35,7 @@ targetCompatibility = buildProperties['java.version']
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
 
     [
         'org.springframework.boot:spring-boot-starter-web',
@@ -64,15 +66,20 @@ def env = (buildProperties['gretty.environment'] ? buildProperties['gretty.envir
 gretty {
     if(env.equals('PROD') || env.equals('QA')) {
         // QA and PROD
-        fileLogEnabled =    buildProperties['gretty.fileLogging']
-        logDir =            buildProperties['gretty.logDirectory']
+        fileLogEnabled    = buildProperties['gretty.fileLogging']
+        logDir            = buildProperties['gretty.logDirectory']
     } else {
         // DEV
         consoleLogEnabled = buildProperties['gretty.consoleLogging']
     }
-    httpPort =          Integer.parseInt(buildProperties['gretty.port'])
-    loggingLevel =      buildProperties['gretty.loggingLevel']
-    springBootVersion = buildProperties['gretty.springBootVersion']
+    httpPort              = Integer.parseInt(buildProperties['gretty.port'])
+    loggingLevel          = buildProperties['gretty.loggingLevel']
+    springBootVersion     = buildProperties['gretty.springBootVersion']
+    scanInterval          = buildProperties['gretty.scanInterval']
+    // For local development
+    reloadOnConfigChange  = false
+    inplaceMode           = 'hard'
+    fastReload            = buildProperties['gretty.fastReload']
 }
 
 

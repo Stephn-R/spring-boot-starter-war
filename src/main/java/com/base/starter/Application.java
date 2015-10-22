@@ -1,15 +1,23 @@
 /**
  *
  */
-package com.basic.starter;
+package com.base.starter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.base.starter.cors.SimpleCORSFilter;
 
 /**
  * Main File for running Spring Boot Application
@@ -35,6 +43,22 @@ public class Application extends SpringBootServletInitializer {
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
+	}
+	
+	/**
+	 * Registers a simple CORS Filter to the FilterChain for all API endpoints
+	 * @return
+	 */
+	@SuppressWarnings("serial")
+	@Bean
+	public FilterRegistrationBean corsFilter() {
+		FilterRegistrationBean filterRegBean = new FilterRegistrationBean();
+		SimpleCORSFilter corsFilter = new SimpleCORSFilter();
+	    filterRegBean.setFilter(corsFilter);
+	    // Setup filter configurations
+	    List<String> urlPatterns = new ArrayList<String>() {{ add("/api/*"); }};
+	    filterRegBean.setUrlPatterns(urlPatterns);
+	    return filterRegBean;
 	}
 
 	/**

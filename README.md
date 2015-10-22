@@ -11,25 +11,24 @@ The Spring-Boot-Starter-WAR project has already been built and is ready to use *
 
 1. Verify that you have [Gradle STS Support](http://docs.spring.io/sts/docs/2.9.0.old/reference/html/gradle/installation.html)
 2. Import the Gradle using the Gradle import tool
-3. Open the Tasks Quick Launcher by pressing `CTRL+ALT+SHIFT+R`
-4. Run the task `appStartWar`
-5. [Click Here to open the page](http://localhost:5555/starter)
+3. Open the Tasks Quick Launcher by pressing <kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd>
+4. Type in `appRun` and press <kbd>ENTER</kbd>
+5. [Click Here to open the page](http://localhost:5555/app/starter)
 6. Enjoy!
 
 #### Terminal
 
 1. Open up a terminal
 2. Cd into the directory containing the project
-3. Run the command `gradle appStartWar`
-4. [Click Here to open the page](http://localhost:5555/starter)
+3. Run the command `npm start`
+4. [Click Here to open the page](http://localhost:5555/app/starter)
 5. Enjoy!
 
 ## Important Tips
 
 I have included several automation tools to help with building the project and managing changes. As such, below are some of the tools that come attached with Gradle:
 
-1. Additional Build Automation with Gulp
-	a. Various Gulp Tasks like linting, documentation generators, and more
+1. Additional Build Automation with [Gulp](http://gulpjs.com/) (Javascript based Build Automation Tool)
 2. Project management via separate config files for Gulp and Gradle
 
 ## Reporting Issues <a name="reporting-issues"/>
@@ -47,6 +46,10 @@ Starters are a set of convenient dependency descriptors. You get a one-stop-shop
 **gretty**
 
 Gretty is a feature-rich gradle plugin for running web-apps on embedded servlet containers. It supports Jetty versions 7, 8 and 9, Tomcat versions 7 and 8, multiple web-apps and many more. It wraps servlet container functions as convenient Gradle tasks and configuration DSL.
+
+**jackson**
+
+Jackson is a simple tool that allows you to send POJOs as JSON from the server to the client side. For an example of this, see the @RequestMapping for "/api/test" in the `com.base.starter.api` package.
 
 ## License
 
