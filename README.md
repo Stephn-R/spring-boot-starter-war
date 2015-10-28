@@ -7,6 +7,13 @@ Read more about Spring Boot on their [Github page](https://github.com/spring-pro
 
 The Spring-Boot-Starter-WAR project has already been built and is ready to use **out of the box**!
 
+#### Required Command Line Tools
+
+1. NodeJS
+2. Gradle
+3. Bower
+4. Gulp
+
 #### STS (Spring Tool Suite):
 
 1. Verify that you have [Gradle STS Support](http://docs.spring.io/sts/docs/2.9.0.old/reference/html/gradle/installation.html)
