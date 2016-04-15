@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>Home</title>
+  <link rel="stylesheet" type="text/css" href="resources/style.css">
 </head>
 <body>
   <h1>Hello World!</h1>
